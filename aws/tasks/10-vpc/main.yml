@@ -1,0 +1,17 @@
+---
+- name: Create VPC and Subnet
+  ec2_vpc:
+    state: present
+    region: "{{ vpc_region }}"
+    cidr_block: "{{ vpc_cidr }}"
+    subnets: "{{ vpc_public_subnets }}"
+    internet_gateway: yes
+    route_tables:
+    - subnets: "{{ vpc_public_subnets|map(attribute='cidr')|list }}"
+      routes:
+      - dest: 0.0.0.0/0
+        gw: igw
+      wait: yes
+    resource_tags: {"environment":"dev"}
+  register: vpc
+

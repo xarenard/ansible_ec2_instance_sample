@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    #- group_vars/all
+    - aws/vars/main.yml
+  tasks:
+  - include: aws/tasks/10-vpc/main.yml
+  - include: aws/tasks/20-sg/main.yml
+  - include: aws/tasks/30-ec2/main.yml

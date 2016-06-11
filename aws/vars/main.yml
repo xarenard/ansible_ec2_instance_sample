@@ -1,0 +1,13 @@
+---
+vpc_region: eu-west-1
+vpc_cidr: 192.168.0.0/16
+vpc_public_subnets:
+  - cidr: 192.168.1.0/24
+    az: "eu-west-1a"
+    resource_tags: {"Name":"Subnet1"}
+
+sg_name: my_security_group
+
+ec2_ami: ami-47a23a30
+ec2_instance_type: t2.micro
+
